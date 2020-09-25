@@ -8,12 +8,8 @@ fun main() {
     println(aluno1.toString())
     println(aluno2.equals(aluno1))
 
-    println("------------------------ Curso ----------------")
-    var curso1 = Curso("Kotlin", 456)
-    var curso2 = Curso("Java", 457)
-
-    println(curso1.toString())
-    println(curso1.equals(curso2))
+    var listaAlunos1 = mutableListOf<Aluno>()
+    var listaAlunos2 = mutableListOf<Aluno>()
 
     println("------------------- PROFESSOR TITULAR ----------------")
     var professor1 = ProfessorTitular("Vitoria", "Santos", 3, 789, "Kotlin")
@@ -28,4 +24,12 @@ fun main() {
 
     println(professorAdjunto1.toString())
     println(professorAdjunto2.equals(professorAdjunto1))
+
+    println("------------------------ Curso ----------------")
+    var curso1 = Curso("Kotlin", 456, professor1, professorAdjunto1, 3, listaAlunos1)
+    var curso2 = Curso("Java", 457, professor2, professorAdjunto2, 2, listaAlunos2)
+
+    println(curso1.toString())
+    println(curso2.toString())
+    println(curso1.equals(curso2))
 }
