@@ -32,4 +32,9 @@ fun main() {
     println(curso1.toString())
     println(curso2.toString())
     println(curso1.equals(curso2))
+
+    println("-------------------- Matricula -----------------------")
+    var matricula1 = Matricula(aluno1, curso1)
+    println(matricula1.toString())
+
 }
