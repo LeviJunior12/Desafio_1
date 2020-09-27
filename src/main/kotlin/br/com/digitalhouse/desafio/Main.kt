@@ -9,7 +9,7 @@ fun main() {
     println(aluno2.equals(aluno1))
 
     var listaAlunos1 = mutableListOf<Aluno>(aluno1, aluno2)
-    var listaAlunos2 = mutableListOf<Aluno>()
+    var listaAlunos2 = mutableListOf<Aluno>(aluno1, aluno2)
 
     println("------------------- PROFESSOR TITULAR ----------------")
     var professor1 = ProfessorTitular("Vitoria", "Santos", 3, 789, "Kotlin")
@@ -47,5 +47,18 @@ fun main() {
     println("-------------------------- DIGITAL HOUSE MANAGER ------------------")
     var digitalhm = DigitalHouseManager(listaAlunos1, listaProfessores, listaCurso, listaMatricula)
     println(digitalhm.toString())
+
+    println("------------------------- PART H ---------------------------------")
+    var aluno3 = Aluno("Rodolfo", "Silva", 951)
+    if (curso1.adicionarUmAluno(aluno3)) {
+        println("Aluno adicionado!")
+    }
+
+    if (curso2.adicionarUmAluno(aluno3)) {
+        println("Aluno adicionado!")
+    }
+
+    // Excluir aluno
+    curso1.excluirAluno(aluno2)
 
 }

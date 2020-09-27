@@ -9,6 +9,22 @@ class Curso(
     var listaDeAlunos: MutableList<Aluno>,
 ) {
 
+    fun adicionarUmAluno(umAluno: Aluno): Boolean {
+        return if(listaDeAlunos.size >= quantidadeMaximaAlunos) {
+            println("Não é possivel adicionar o aluno no curso pois alcançou a capacidade maxima")
+            false
+        } else {
+            listaDeAlunos.add(umAluno)
+            println(listaDeAlunos.toString())
+            true
+        }
+    }
+
+    fun excluirAluno(umAluno: Aluno) {
+        listaDeAlunos.remove(umAluno)
+        println("Exclusão Feita Com Sucesso a lista de alunos é: ${listaDeAlunos}")
+    }
+
     override fun equals(other: Any?): Boolean {
         return other == codigoDoCurso
     }
