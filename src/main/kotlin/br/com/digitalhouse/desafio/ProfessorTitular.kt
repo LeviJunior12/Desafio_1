@@ -12,6 +12,6 @@ class ProfessorTitular(
     }
 
     override fun toString(): String {
-        return "O Nome do professor(a) é ${nome} ${sobrenome} o tempo de casa é ${tempoDeCasa} e o código é ${codigoDeProfessor} e a especialidade é ${especialidade}"
+        return "O Nome do professor(a) é ${nome} ${sobrenome} o código é ${codigoDeProfessor} e a especialidade é ${especialidade}"
     }
 }
