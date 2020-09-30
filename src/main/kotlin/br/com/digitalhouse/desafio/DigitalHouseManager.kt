@@ -80,7 +80,21 @@ class DigitalHouseManager(
     fun matricularAluno(nome: String, sobrenome: String, codigoAluno: Int) {
         var aluno = Aluno(nome, sobrenome, codigoAluno)
         listaDeAlunos.add(aluno)
-        println("O aluno(a) ${aluno.nome} foi adicionado!")
+        println("O aluno(a) ${aluno.nome} foi matriculado!")
+    }
+
+    fun matricularAluno(codigoAluno: Int, codigoCurso: Int) {
+        var curso = listaDeCurso.find { curso -> codigoCurso.equals(curso.codigoDoCurso) }
+        var alunoMatricular = listaDeAlunos.find { aluno -> codigoAluno.equals(aluno.codigoDeAluno) }
+
+        if(curso != null && alunoMatricular != null) {
+            var aluno = Aluno(alunoMatricular.nome, alunoMatricular.sobrenome, alunoMatricular.codigoDeAluno)
+            var podeMatricular = curso.adicionarUmAluno(aluno)
+            if (podeMatricular) println("Aluno(a) ${aluno.nome} foi matriculado no curso de ${curso.nome}")
+
+            if(podeMatricular)
+                this.matricularAluno(aluno.nome, aluno.sobrenome, aluno.codigoDeAluno)
+        }
     }
 
     override fun toString(): String {

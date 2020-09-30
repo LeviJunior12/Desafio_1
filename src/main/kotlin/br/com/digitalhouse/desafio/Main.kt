@@ -31,10 +31,10 @@ fun main() {
 
     println("------------------------ CURSO ----------------")
     var curso1 = Curso("Kotlin", 456, 3)
-    var curso2 = Curso("Java", 456, 2)
+    var curso2 = Curso("Java", 457, 2)
     var curso3 = Curso("Javaa", 4572, 1)
 
-    var listaCurso = mutableListOf<Curso>()
+    var listaCurso = mutableListOf<Curso>(curso1, curso2, curso3)
 
     println(curso1.toString())
     println(curso2.toString())
@@ -97,6 +97,9 @@ fun main() {
     // Excluir um professor
     digitalhm.excluirProfessor(8821)
 
-    //Matricular Aluno
+    // Matricular Aluno
     digitalhm.matricularAluno("Patricia", "Silva", 7777)
+
+    // Matricular Aluno/Curso
+    digitalhm.matricularAluno(7777,456)
 }
