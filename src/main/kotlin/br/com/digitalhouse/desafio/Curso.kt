@@ -4,8 +4,12 @@ class Curso(
     var nome: String,
     var codigoDoCurso: Int,
     var quantidadeMaximaAlunos: Int,
-    var listaDeAlunos: MutableList<Aluno> = mutableListOf<Aluno>()
+    var listaDeAlunos: MutableList<Aluno> = mutableListOf<Aluno>(),
 ) {
+
+    lateinit var professorTitular: ProfessorTitular
+    lateinit var professorAdjunto: ProfessorAdjunto
+
     constructor(
         nome: String,
         codigoDoCurso: Int,
@@ -13,7 +17,10 @@ class Curso(
         listaDeAlunos: MutableList<Aluno>,
         professorTitular: ProfessorTitular,
         professorAdjunto: ProfessorAdjunto
-    ) : this(nome, codigoDoCurso, quantidadeMaximaAlunos, listaDeAlunos)
+    ) : this(nome, codigoDoCurso, quantidadeMaximaAlunos, listaDeAlunos) {
+        this.professorTitular = professorTitular
+        this.professorAdjunto = professorAdjunto
+    }
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
         return if (listaDeAlunos.size >= quantidadeMaximaAlunos) {

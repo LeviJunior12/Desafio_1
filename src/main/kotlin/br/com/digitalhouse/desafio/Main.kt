@@ -30,16 +30,16 @@ fun main() {
     println(professorAdjunto2.equals(professorAdjunto1))
 
     println("------------------------ CURSO ----------------")
-    var curso1 = Curso("Kotlin", 456, 3)
-    var curso2 = Curso("Java", 457, 2)
-    var curso3 = Curso("Javaa", 4572, 1)
+    var curso1 = Curso("Kotlin", 456, 3, listaAlunos1, professor1, professorAdjunto1)
+    // var curso2 = Curso("Java", 457, 2)
+    // var curso3 = Curso("Javaa", 4572, 1)
 
-    var listaCurso = mutableListOf<Curso>(curso1, curso2, curso3)
+    var listaCurso = mutableListOf<Curso>(curso1)
 
     println(curso1.toString())
-    println(curso2.toString())
-    println(curso3.toString())
-    println(curso1.equals(curso2))
+    // println(curso2.toString())
+    // println(curso3.toString())
+    // println(curso1.equals(curso2))
 
     println("-------------------- MATRICULA -----------------------")
     var matricula1 = Matricula(aluno1, curso1)
@@ -102,4 +102,6 @@ fun main() {
 
     // Matricular Aluno/Curso
     digitalhm.matricularAluno(7777,456)
+
+    digitalhm.alocarProfessores(456, 8822, 8824)
 }

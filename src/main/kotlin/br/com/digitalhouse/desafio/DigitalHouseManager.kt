@@ -97,6 +97,20 @@ class DigitalHouseManager(
         }
     }
 
+    fun alocarProfessores(codigoCurso: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int) {
+        var professorTitularLista = listaDeProfessoresTitular.find { professorTitular -> codigoProfessorTitular.equals(professorTitular.codigoDeProfessor)  }
+        var professorAdjuntoLista = listaDeProfessoresAdjunto.find { professorAdjunto -> codigoProfessorAdjunto.equals(professorAdjunto.codigoDeProfessor) }
+        var alocarNoCurso = listaDeCurso.find { curso -> codigoCurso.equals(curso.codigoDoCurso) }
+
+        if(alocarNoCurso != null && professorTitularLista != null && professorAdjuntoLista != null) {
+            var professorTitular = ProfessorTitular(professorTitularLista.nome, professorTitularLista.sobrenome, professorTitularLista.tempoDeCasa, professorTitularLista.codigoDeProfessor, professorTitularLista.especialidade)
+            var professorAdjunto = ProfessorAdjunto(professorAdjuntoLista.nome, professorAdjuntoLista.sobrenome, professorAdjuntoLista.tempoDeCasa, professorAdjuntoLista.codigoDeProfessor, professorAdjuntoLista.quantidadeHorasMonitoria)
+            var curso = Curso(alocarNoCurso.nome, alocarNoCurso.codigoDoCurso, alocarNoCurso.quantidadeMaximaAlunos, alocarNoCurso.listaDeAlunos, professorTitular, professorAdjunto)
+            println("Os professores ${professorTitular.nome} e ${professorAdjunto.nome} foram adicionados no curso de ${curso.nome}")
+        }
+
+    }
+
     override fun toString(): String {
         return "$listaDeAlunos $listaDeProfessoresTitular $listaDeProfessoresAdjunto $listaDeCurso $listaDeMatricula"
     }
