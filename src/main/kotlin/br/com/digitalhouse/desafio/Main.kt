@@ -1,107 +1,52 @@
 package br.com.digitalhouse.desafio
 
 fun main() {
-    println("------------- ALUNO --------------------")
-    var aluno1 = Aluno("Levi", "Junior", 123)
-    var aluno2 = Aluno("João", "Silva", 124)
 
-    println(aluno1.toString())
-    println(aluno2.equals(aluno1))
-
-    var listaAlunos1 = mutableListOf<Aluno>(aluno1, aluno2)
-    var listaAlunos2 = mutableListOf<Aluno>(aluno1, aluno2)
-
-    println("------------------- PROFESSOR TITULAR ----------------")
-    var professor1 = ProfessorTitular("Vitoria", "Santos", 3, 789, "Kotlin")
-    var professor2 = ProfessorTitular("Jessica", "Correa", 4, 781, "Java")
-
+    // Inicializando listas da classe digital manager
+    var listaAlunos = mutableListOf<Aluno>()
     var listaProfessoresTitular = mutableListOf<ProfessorTitular>()
-
-    println(professor1.toString())
-    println(professor2.equals(professor1))
-
-    println("------------------- PROFESSOR ADJUNTO -------------------")
-    var professorAdjunto1 = ProfessorAdjunto("Flavia", "Silva", 8, 453, 7)
-    var professorAdjunto2 = ProfessorAdjunto("Clarice", "Lisp", 2, 458, 4)
-
     var listaProfessoresAdjunto = mutableListOf<ProfessorAdjunto>()
-
-    println(professorAdjunto1.toString())
-    println(professorAdjunto2.equals(professorAdjunto1))
-
-    println("------------------------ CURSO ----------------")
-    var curso1 = Curso("Kotlin", 456, 3, listaAlunos1, professor1, professorAdjunto1)
-    // var curso2 = Curso("Java", 457, 2)
-    // var curso3 = Curso("Javaa", 4572, 1)
-
-    var listaCurso = mutableListOf<Curso>(curso1)
-
-    println(curso1.toString())
-    // println(curso2.toString())
-    // println(curso3.toString())
-    // println(curso1.equals(curso2))
-
-    println("-------------------- MATRICULA -----------------------")
-    var matricula1 = Matricula(aluno1, curso1)
-
     var listaMatricula = mutableListOf<Matricula>()
+    var listaCurso = mutableListOf<Curso>()
 
-    println(matricula1.toString())
+    // Instancia da Classe Digital Manager
+    var digitalHouseManager = DigitalHouseManager(listaAlunos, listaProfessoresTitular, listaProfessoresAdjunto, listaCurso, listaMatricula)
 
-    println("-------------------------- DIGITAL HOUSE MANAGER ------------------")
-    var digitalhm = DigitalHouseManager(listaAlunos1, listaProfessoresTitular, listaProfessoresAdjunto,listaCurso, listaMatricula)
-    println(digitalhm.toString())
+    println("\n ##################### Registrar Aluno ##########################")
+    digitalHouseManager.matricularAluno("Levi", "Junior", 123)
+    digitalHouseManager.matricularAluno("João", "Silva", 124)
+    digitalHouseManager.matricularAluno("Junior", "Silv", 125)
 
-    println("------------------------- PART H ---------------------------------")
-    var aluno3 = Aluno("Rodolfo", "Silva", 951)
-    var aluno4 = Aluno("Carlos", "Silva", 958)
+    println("\n ##################### Registrar Professor Adjunto ##########################")
+    digitalHouseManager.registrarProfessorAdjunto("Flavia", "Silva", 453, 7)
+    digitalHouseManager.registrarProfessorAdjunto("Clarice", "Lisp", 458, 4)
 
-    if (curso1.adicionarUmAluno(aluno3)) {
-        println("Aluno adicionado!")
-    }
+    println("\n ##################### Registrar Professor Titular ##########################")
+    digitalHouseManager.registrarProfessorTitular("Fernado", "Silva", 789, "Kotlin")
+    digitalHouseManager.registrarProfessorTitular("Francisco", "Silva", 781, "Java")
 
-    if (curso1.adicionarUmAluno(aluno2)) {
-        println("Aluno adicionado!")
-    }
+    println("\n ##################### Registrar Curso ##########################")
+    digitalHouseManager.registrarCurso("Full Stack", 20001, 3)
+    digitalHouseManager.registrarCurso("Android", 20002, 2)
 
-    if (curso1.adicionarUmAluno(aluno1)) {
-        println("Aluno adicionado!")
-    }
+    // Alocar Professor
+    println("\n ##################### Alocando Professor ##########################")
+    digitalHouseManager.alocarProfessores(20001, 781, 453)
+    digitalHouseManager.alocarProfessores(20002, 789, 458)
 
-    // Aluno não pode entrar no curso por causa da quantidade de aluno maxima
-    if (curso1.adicionarUmAluno(aluno4)) {
-        println("Aluno adicionado!")
-    }
+    // Matricular o Aluno
+    // 2 Alunos no Full Stack
+    println("\n ##################### Matricula Aluno Full Stack ##########################")
+    digitalHouseManager.matricularAluno(123, 20001)
+    digitalHouseManager.matricularAluno(124, 20001)
 
-    // Excluir aluno
-    curso1.excluirAluno(aluno2)
+    // 3 Alunos no Android
+    println("\n ##################### Matricula Aluno Android ##########################")
+    digitalHouseManager.matricularAluno(123, 20002)
+    digitalHouseManager.matricularAluno(124, 20002)
+    digitalHouseManager.matricularAluno(125, 20002)
 
-    println("---------------------------- PART I ---------------------------------")
+    println("\n ##################### Informação Das Listas Da Digital Manager ##########################")
+    println(digitalHouseManager.toString())
 
-    // Registrar Curso
-    digitalhm.registrarCurso("Java2", 654, 2)
-    digitalhm.registrarCurso("Java3", 655, 1)
-
-    // Realizar Exclusão
-    digitalhm.excluirCurso(654)
-
-    // Registrar professor Titular
-    digitalhm.registrarProfessorTitular("Francisco", "Silva", 8822, "React")
-    digitalhm.registrarProfessorTitular("Renato", "Silva", 8823, "Agile")
-
-    // Registrar professor adjunto
-    digitalhm.registrarProfessorAdjunto("Bianca", "Silva", 8821, 4)
-    digitalhm.registrarProfessorAdjunto("Fernado", "Silva", 8824, 1)
-
-
-    // Excluir um professor
-    digitalhm.excluirProfessor(8821)
-
-    // Matricular Aluno
-    digitalhm.matricularAluno("Patricia", "Silva", 7777)
-
-    // Matricular Aluno/Curso
-    digitalhm.matricularAluno(7777,456)
-
-    digitalhm.alocarProfessores(456, 8822, 8824)
 }

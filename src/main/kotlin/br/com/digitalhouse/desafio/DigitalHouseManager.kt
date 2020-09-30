@@ -92,8 +92,11 @@ class DigitalHouseManager(
             var podeMatricular = curso.adicionarUmAluno(aluno)
             if (podeMatricular) println("Aluno(a) ${aluno.nome} foi matriculado no curso de ${curso.nome}")
 
-            if(podeMatricular)
+            if(podeMatricular) {
                 this.matricularAluno(aluno.nome, aluno.sobrenome, aluno.codigoDeAluno)
+                var matricula = Matricula(aluno, curso)
+                listaDeMatricula.add(matricula)
+            }
         }
     }
 
@@ -112,6 +115,6 @@ class DigitalHouseManager(
     }
 
     override fun toString(): String {
-        return "$listaDeAlunos $listaDeProfessoresTitular $listaDeProfessoresAdjunto $listaDeCurso $listaDeMatricula"
+        return "$listaDeAlunos \n $listaDeProfessoresTitular \n $listaDeProfessoresAdjunto \n $listaDeCurso \n $listaDeMatricula"
     }
 }
